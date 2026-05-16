@@ -7,19 +7,29 @@ public class SistemaPrincipal {
     public static void main(String[] args) {
 
         // Instância 1 - Minha Guitarra
-        Guitarra minhaGuitarra = new Guitarra();
-        minhaGuitarra.marca = "Fender";
-        minhaGuitarra.numeroDeCordas = 6;
-        minhaGuitarra.estaAfinada = true;
+        Guitarra minhaGuitarra = new Guitarra("Fender", 6);
 
         // Instância 2 - Guitarra do Professor
-        Guitarra guitarraDoProfessor = new Guitarra();
-        guitarraDoProfessor.marca = "Gibson";
-        guitarraDoProfessor.numeroDeCordas = 7;
-        guitarraDoProfessor.estaAfinada = false;
+        Guitarra guitarraDoProfessor = new Guitarra("Gibson", 7);
 
-        System.out.println("Minha guitarra é: " + minhaGuitarra.marca);
-        System.out.println("A do professor é: " + guitarraDoProfessor.marca);
+        System.out.println("Teste: tocar sem afinar (valor inválido)");
+        minhaGuitarra.tocar("Bohemian Rhapsody");
+
+        System.out.println("Teste: afinar e tocar (valor válido)");
+        minhaGuitarra.afinar();
+        minhaGuitarra.tocar("Bohemian Rhapsody");
+
+        System.out.println("Teste: trocar cordas com valor inválido");
+        guitarraDoProfessor.trocarCordas(12);
+
+        System.out.println("Teste: trocar cordas com valor válido");
+        guitarraDoProfessor.trocarCordas(6);
+
+        System.out.println("Teste: tocar após trocar cordas sem afinar");
+        guitarraDoProfessor.tocar("Stairway to Heaven");
+
+        System.out.println("Estado final das guitarras");
+        System.out.println("Guitarra: " + minhaGuitarra.marca + " - Cordas: " + minhaGuitarra.numeroDeCordas + " - Afinada: " + minhaGuitarra.estaAfinada);
+        System.out.println("Guitarra: " + guitarraDoProfessor.marca + " - Cordas: " + guitarraDoProfessor.numeroDeCordas + " - Afinada: " + guitarraDoProfessor.estaAfinada);
     }
-
 }
