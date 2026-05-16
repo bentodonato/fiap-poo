@@ -132,7 +132,18 @@ só a escrita final no registro mesmo.]
 _Pense nas regras de negócio: O que acontece na hora que a Viagem acaba e o sistema precisa descontar o saldo? Se a Viagem tiver apenas a String "Ana Silva", ela consegue mexer no dinheiro dela?_"
 
 **Sua Resposta:**
-[Escreva sua reflexão aqui]
+[A ideia de passar apenas uma String com o nome é mais simples no início,
+mas limita o que o sistema consegue fazer. Se o Guitarrista tivesse
+apenas o nome "Bento" em vez do objeto inteiro, ele conseguiria
+imprimir quem é o dono da guitarra, mas só isso.
+Agora, ao passar o objeto Guitarra inteiro para o Guitarrista, a associação 
+acontece: o Guitarrista consegue consultar a marca, saber se está
+afinada, chamar afinar() e trocarCordas(), navegado diretamente
+pelo objeto. Na referência, quando afinamos a minhaGuitarra fora do 
+Guitarrista, o usuário Bento enxergou a mudança, porque os dois apontam 
+para o mesmo objeto na memória. Se tivéssemos apenas a String "Fender", 
+essa conexão não existiria, ou seja, o sistema saberia o nome da guitarra,
+mas não conseguiria interagir com ela.]
 
 ---
 

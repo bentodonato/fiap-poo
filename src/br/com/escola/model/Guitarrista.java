@@ -2,17 +2,22 @@ package br.com.escola.model;
 
 public class Guitarrista {
 
-    // Atributos privados
+    // Atributos simples
     private String nome;
     private int idade;
     private int anosDeExperiencia;
 
-    // Contrutor
-    public Guitarrista(String nome, int idade, int anosDeExperiencia) {
+    // ATRIBUTO DE ASSOCIAÇÃO
+    // Um Guitarrista possui uma Guitarra
+    private Guitarra guitarra;
+
+    // Construtor: agora exige uma Guitarra para existir
+    public Guitarrista(String nome, int idade, int anosDeExperiencia, Guitarra guitarra) {
         this.setNome(nome);
         this.setIdade(idade);
         this.setAnosDeExperiencia(anosDeExperiencia);
-        System.out.println("Guitarrista registrado: " + this.nome + ", " + this.idade + " anos!");
+        this.guitarra = guitarra;
+        System.out.println("Guitarrista registrado: " + this.nome + " com uma " + this.guitarra.getMarca() + "!");
     }
 
     // Getters
@@ -28,15 +33,23 @@ public class Guitarrista {
         return this.anosDeExperiencia;
     }
 
-    // públicos
+    public Guitarra getGuitarra() {
+        return this.guitarra;
+    }
+
+    // comportamentos
     public void apresentar() {
         System.out.println("Olá! Me chamo " + this.nome + ", tenho " + this.idade
-                + " anos e " + this.anosDeExperiencia + " anos de experiência.");
+                + " anos, " + this.anosDeExperiencia + " anos de experiência.");
+
+        // Eu entro no Guitarrista, pego a Guitarra, pego a Marca dela.
+        System.out.println("Minha guitarra é uma " + this.guitarra.getMarca()
+                + " com " + this.guitarra.getNumeroDeCordas() + " cordas.");
     }
 
     public void praticar(int horas) {
         if (horas <= 0) {
-            System.out.println("Erro: o número de horas de prática deve ser maior que zero.");
+            System.out.println("Erro: o número de horas deve ser maior que zero.");
             return;
         }
         System.out.println("" + this.nome + " praticou por " + horas + " hora(s). Evoluindo!");

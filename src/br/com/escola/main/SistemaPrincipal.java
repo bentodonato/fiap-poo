@@ -7,28 +7,33 @@ public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        System.out.println("Testando Guitarra\n");
+        System.out.println("Inicializando Sistema\n");
 
+       
         Guitarra minhaGuitarra = new Guitarra("Fender", 6);
-        Guitarra guitarraDoProfessor = new Guitarra("Gibson", 7);
+        Guitarra guitarraDoProf = new Guitarra("Gibson", 7);
 
+        // Guitarristas associando cada um à sua Guitarra
+        Guitarrista bento = new Guitarrista("Bento", 20, 3, minhaGuitarra);
+        Guitarrista professor = new Guitarrista("Professor", 30, 10, guitarraDoProf);
+
+        System.out.println("\nApresentações");
+        bento.apresentar();
+        System.out.println();
+        professor.apresentar();
+
+
+        System.out.println("\nProva da Referência");
+        System.out.println("Guitarra do Bento está afinada? " + bento.getGuitarra().isEstaAfinada());
         minhaGuitarra.afinar();
-        minhaGuitarra.tocar("Bohemian Rhapsody");
-        guitarraDoProfessor.trocarCordas(6);
 
-        System.out.println("\nTestando Guitarrista\n");
+        System.out.println("Depois de afinar, consultado através do Guitarrista: " + bento.getGuitarra().isEstaAfinada());
 
-        Guitarrista guitarrista1 = new Guitarrista("Bento", 20, 3);
-        Guitarrista guitarrista2 = new Guitarrista("Professor", 30, 10);
+        System.out.println("\nNavegando entre objetos");
+        System.out.println("Marca da guitarra do professor consultada via Guitarrista: "
+                + professor.getGuitarra().getMarca());
 
-        guitarrista1.apresentar();
-        guitarrista1.praticar(2);
-
-        guitarrista2.apresentar();
-        guitarrista2.praticar(0);
-
-        System.out.println("\nStatus Final\n");
-        System.out.println("Guitarra: " + minhaGuitarra.getMarca() + " | Cordas: " + minhaGuitarra.getNumeroDeCordas() + " | Afinada: " + minhaGuitarra.isEstaAfinada());
-        System.out.println("Guitarrista: " + guitarrista1.getNome() + " | Idade: " + guitarrista1.getIdade() + " | Experiência: " + guitarrista1.getAnosDeExperiencia() + " anos");
+        bento.praticar(2);
+        bento.praticar(0);
     }
 }
