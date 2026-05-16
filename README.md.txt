@@ -20,8 +20,8 @@ Este projeto é o resultado do aprendizado nas aulas 1-9 de Programação Orient
 
 - [x] Aula 1 - Classes e Objetos
 - [x] Aula 2 - Métodos
-- [] Aula 3 - Encapsulamento
-- [] Aula 4 - Construtores
+- [x] Aula 3 - Encapsulamento
+- [x] Aula 4 - Construtores
 - [] Aula 5 - Associação
 - [] Aula 6 - Herança
 - [] Aula 7 - Polimorfismo
@@ -106,10 +106,22 @@ da maneira que quisermos.]
 >
 > Pensando no mundo real e no Clean Code: Por que é um erro gravíssimo clicar em 'Gerar Getters e Setters para tudo' automaticamente na sua IDE? Como as nossas duas decisões acima protegem o sistema de fraudes e falhas de lógica?"
 
-_Dica: Pense sobre o que pode ou não mudar fisicamente em um carro, e a diferença entre "alterar um dado no banco" e "executar um processo real no Detran"_
+_Dica: Pense sobre o que pode ou não mudar fisicamente em um carro, e a diferença entre "alterar um dado no banco" e "executar um processo real no Detran".
 
 **Sua Resposta:**
-[Escreva sua reflexão aqui]
+[Usar os getters e setters para tudo automaticamente é ruim porque
+expõe o controle do objeto para qualquer parte do código, ignorando
+as regras de negócio. No mundo real, nem tudo pode ou tem que mudar.
+Na classe Guitarra, a marca é imutável: uma Fender nunca vai vira
+uma Gibson. Por isso não existe um setMarca() público. Se gerássemos
+automaticamente, qualquer programador poderia trocar a marca a
+qualquer momento, corrompendo a identidade do objeto.
+Já o numeroDeCordas pode mudar, mas só pelo método trocarCordas(),
+que valida se o valor é 6 ou 7 antes de alterar. O setNumeroDeCordas()
+existe, mas é privado. A diferença é igual no Detran: você não edita a 
+placa diretamente no banco de dados, você tem que abrir um processo real com 
+regras e validações. O método público é o processo e o setter privado é 
+só a escrita final no registro mesmo.]
 
 ---
 

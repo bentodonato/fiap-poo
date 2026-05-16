@@ -1,37 +1,34 @@
 package br.com.escola.main;
 
 import br.com.escola.model.Guitarra;
+import br.com.escola.model.Guitarrista;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        System.out.println("Iniciando o Sistema Guitarra\n");
+        System.out.println("Testando Guitarra\n");
 
-        // Construtor agora vai exigir a marca e numero_de_cordas
         Guitarra minhaGuitarra = new Guitarra("Fender", 6);
         Guitarra guitarraDoProfessor = new Guitarra("Gibson", 7);
 
-        System.out.println("Teste: tocar sem afinar");
-        minhaGuitarra.tocar("Bohemian Rhapsody");
-
-        System.out.println("\nTeste: afinar e tocar");
         minhaGuitarra.afinar();
         minhaGuitarra.tocar("Bohemian Rhapsody");
-
-        System.out.println("\nTeste: trocar cordas com valor inválido");
-        guitarraDoProfessor.trocarCordas(12);
-
-        System.out.println("\nTeste: trocar cordas com valor válido");
         guitarraDoProfessor.trocarCordas(6);
 
-        System.out.println("\nTeste: tocar após trocar cordas sem afinar");
-        guitarraDoProfessor.tocar("Stairway to Heaven");
+        System.out.println("\nTestando Guitarrista\n");
 
-        System.out.println("\nStatus final das guitarras");
-        // Agora usamos getters para ler os atributos
+        Guitarrista guitarrista1 = new Guitarrista("Bento", 20, 3);
+        Guitarrista guitarrista2 = new Guitarrista("Professor", 30, 10);
+
+        guitarrista1.apresentar();
+        guitarrista1.praticar(2);
+
+        guitarrista2.apresentar();
+        guitarrista2.praticar(0);
+
+        System.out.println("\nStatus Final\n");
         System.out.println("Guitarra: " + minhaGuitarra.getMarca() + " | Cordas: " + minhaGuitarra.getNumeroDeCordas() + " | Afinada: " + minhaGuitarra.isEstaAfinada());
-        System.out.println("Guitarra: " + guitarraDoProfessor.getMarca() + " | Cordas: " + guitarraDoProfessor.getNumeroDeCordas() + " | Afinada: " + guitarraDoProfessor.isEstaAfinada());
-
+        System.out.println("Guitarrista: " + guitarrista1.getNome() + " | Idade: " + guitarrista1.getIdade() + " | Experiência: " + guitarrista1.getAnosDeExperiencia() + " anos");
     }
 }
