@@ -1,31 +1,37 @@
 package br.com.escola.main;
 
-import br.com.escola.model.Guitarra;
+import br.com.escola.model.Avaliavel;
 import br.com.escola.model.GuitarraAcustica;
 import br.com.escola.model.GuitarraEletrica;
-import java.util.ArrayList;
-import java.util.List;
+import br.com.escola.model.Guitarrista;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
+        System.out.println("Sistema de Avaliação Musical\n");
 
-        // teste 1: Subclasses funcionam normalmente
-        List<Guitarra> colecao = new ArrayList<>();
+        GuitarraEletrica stratocaster = new GuitarraEletrica("Fender", 6, 100);
+        GuitarraAcustica violao = new GuitarraAcustica("Yamaha", 6, true);
+        Guitarrista bento = new Guitarrista("Bento", 20, 3, stratocaster);
+        Guitarrista professor = new Guitarrista("Professor", 45, 20, violao);
 
-        colecao.add(new GuitarraEletrica("Fender", 6, 100));
-        colecao.add(new GuitarraEletrica("Gibson", 7, 50));
-        colecao.add(new GuitarraAcustica("Yamaha", 6, true));
-        colecao.add(new GuitarraAcustica("Takamine", 6, false));
+        Avaliavel[] avaliados = new Avaliavel[] {
+            stratocaster,
+            violao,
+            bento,
+            professor
+        };
 
-        System.out.println("CATÁLOGO DE GUITARRAS\n");
+        System.out.println("\nRelatório de Avaliações\n");
 
-        for (Guitarra guitarra : colecao) {
-            System.out.println("Marca: " + guitarra.getMarca());
-            guitarra.exibirTipo();
-            System.out.println(guitarra.gerarSom());
-            System.out.println("-----------------------------------");
+        for (Avaliavel avaliavel : avaliados) {
+            avaliavel.exibirAvaliacao();
         }
+
+        System.out.println("\nVerificando tipos");
+        System.out.println("Stratocaster é Avaliavel? " + (stratocaster instanceof Avaliavel));
+        System.out.println("Bento é Avaliavel? " + (bento instanceof Avaliavel));
+        System.out.println("Violão é Avaliavel? " + (violao instanceof Avaliavel));
     }
 }

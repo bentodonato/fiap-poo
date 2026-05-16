@@ -26,7 +26,7 @@ Este projeto é o resultado do aprendizado nas aulas 1-9 de Programação Orient
 - [x] Aula 6 - Herança
 - [x] Aula 7 - Polimorfismo
 - [x] Aula 8 - Classes Abstratas
-- [] Aula 9 - Interfaces
+- [x] Aula 9 - Interfaces
 
 ---
 
@@ -212,7 +212,17 @@ Pense: Se `CarroEletrico` pudesse herdar de `Veiculo` E de `Bateria` ao mesmo te
 Como as interfaces resolvem esse problema?"
 
 **Sua Resposta:**
-[Escreva sua reflexão aqui]
+[O Java só permite uma mãe porque, se GuitarraEletrica pudesse herdar
+de Guitarra e de Amplificador ao mesmo tempo, e ambas tivessem um
+método gerarSom(), o Java não saberia qual versão usar.
+As interfaces resolvem isso porque elas não têm implementação,
+só assinatura. Quando GuitarraEletrica implementa Avaliavel, ela
+não herda nenhum corpo de método, ela apenas assina o contrato e
+escreve a sua própria versão do calcularNota().
+No projeto, GuitarraEletrica extends Guitarra (uma mãe só)
+e implements Avaliavel (contrato sem corpo). Assim, ela herda o
+comportamento real de Guitarra (afinar, tocar, trocarCordas)
+e também garante ao sistema que sabe calcular sua própria nota.]
 
 ---
 

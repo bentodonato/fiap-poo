@@ -1,17 +1,12 @@
 package br.com.escola.model;
 
-public class Guitarrista {
+public class Guitarrista implements Avaliavel {
 
-    // Atributos simples
     private String nome;
     private int idade;
     private int anosDeExperiencia;
-
-    // ATRIBUTO DE ASSOCIAÇÃO
-    // Um Guitarrista possui uma Guitarra
     private Guitarra guitarra;
 
-    // Construtor: agora exige uma Guitarra para existir
     public Guitarrista(String nome, int idade, int anosDeExperiencia, Guitarra guitarra) {
         this.setNome(nome);
         this.setIdade(idade);
@@ -20,29 +15,14 @@ public class Guitarrista {
         System.out.println("Guitarrista registrado: " + this.nome + " com uma " + this.guitarra.getMarca() + "!");
     }
 
-    // Getters
-    public String getNome() {
-        return this.nome;
-    }
+    public String getNome() { return this.nome; }
+    public int getIdade() { return this.idade; }
+    public int getAnosDeExperiencia() { return this.anosDeExperiencia; }
+    public Guitarra getGuitarra() { return this.guitarra; }
 
-    public int getIdade() {
-        return this.idade;
-    }
-
-    public int getAnosDeExperiencia() {
-        return this.anosDeExperiencia;
-    }
-
-    public Guitarra getGuitarra() {
-        return this.guitarra;
-    }
-
-    // comportamentos
     public void apresentar() {
         System.out.println("Olá! Me chamo " + this.nome + ", tenho " + this.idade
                 + " anos, " + this.anosDeExperiencia + " anos de experiência.");
-
-        // Eu entro no Guitarrista, pego a Guitarra, pego a Marca dela.
         System.out.println("Minha guitarra é uma " + this.guitarra.getMarca()
                 + " com " + this.guitarra.getNumeroDeCordas() + " cordas.");
     }
@@ -55,28 +35,31 @@ public class Guitarrista {
         System.out.println("" + this.nome + " praticou por " + horas + " hora(s). Evoluindo!");
     }
 
-    // Setters privados
+    @Override
+    public double calcularNota() {
+        if (this.anosDeExperiencia >= 10) return 10.0;
+        if (this.anosDeExperiencia >= 5)  return 8.0;
+        if (this.anosDeExperiencia >= 2)  return 6.0;
+        return 4.0;
+    }
+
+    @Override
+    public void exibirAvaliacao() {
+        System.out.println("Avaliação | Guitarrista: " + this.nome + " | Nota: " + this.calcularNota());
+    }
+
     private void setNome(String nome) {
-        if (nome != null && !nome.trim().isEmpty()) {
-            this.nome = nome;
-        } else {
-            System.out.println("Erro de Validação: Nome inválido!");
-        }
+        if (nome != null && !nome.trim().isEmpty()) { this.nome = nome; }
+        else { System.out.println("Erro: nome inválido!"); }
     }
 
     private void setIdade(int idade) {
-        if (idade >= 5 && idade <= 100) {
-            this.idade = idade;
-        } else {
-            System.out.println("Erro de Validação: Idade inválida!");
-        }
+        if (idade >= 5 && idade <= 100) { this.idade = idade; }
+        else { System.out.println("Erro: idade inválida!"); }
     }
 
     private void setAnosDeExperiencia(int anos) {
-        if (anos >= 0) {
-            this.anosDeExperiencia = anos;
-        } else {
-            System.out.println("Erro de Validação: Anos de experiência não podem ser negativos!");
-        }
+        if (anos >= 0) { this.anosDeExperiencia = anos; }
+        else { System.out.println("Erro: anos de experiência inválidos!"); }
     }
 }
