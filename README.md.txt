@@ -192,7 +192,14 @@ Por que, então, no código, precisamos EXPLICITAMENTE dizer ao Java que `Veicul
 Pense: Se esquecermos de colocar `abstract`, qual o risco que corremos? Alguém pode criar `new Veiculo()` e quebrar a lógica do nosso sistema?"
 
 **Sua Resposta:**
-[Escreva sua reflexão aqui]
+[Não faz sentido existir uma "Guitarra genérica" no mundo real.
+Quando alguém entra em uma loja de instrumentos, vai comprar uma
+guitarra elétrica ou uma guitarra acústica, nunca apenas "uma
+guitarra" sem tipo. O Java não deduz isso sozinho porque, a classe
+Guitarra tem construtor, atributos e métodos. Somos nós programadores
+que sabemos que ela não deveria existir sozinha. O 'abstract' é a forma 
+de comunicar isso ao Java. O método abstrato existe para garantir que 
+toda guitarra declare o seu tipo.]
 
 ---
 
