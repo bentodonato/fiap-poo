@@ -22,8 +22,8 @@ Este projeto é o resultado do aprendizado nas aulas 1-9 de Programação Orient
 - [x] Aula 2 - Métodos
 - [x] Aula 3 - Encapsulamento
 - [x] Aula 4 - Construtores
-- [] Aula 5 - Associação
-- [] Aula 6 - Herança
+- [x] Aula 5 - Associação
+- [x] Aula 6 - Herança
 - [] Aula 7 - Polimorfismo
 - [] Aula 8 - Classes Abstratas
 - [] Aula 9 - Interfaces
@@ -154,7 +154,16 @@ mas não conseguiria interagir com ela.]
 Por que o Java não deixa a filha alterar as variáveis privadas da mãe diretamente? Qual o princípio das aulas passadas que isso está protegendo?"
 
 **Sua Resposta:**
-[Escreva sua reflexão aqui]
+[O Java não vai deixar a filha alterar atributos privados da mãe
+diretamente, porque isso violaria o encapsulamento.
+Na classe Guitarra, marca e numeroDeCordas são private.
+Mesmo que GuitarraEletrica herde tudo de Guitarra, ela não pode
+fazer this.marca = "Fender". Ela é obrigada a passar
+pelo super(), que vai chamar o construtor da mãe, usando
+o setMarca() privado (validação existe).
+A mãe Guitarra definiu suas regras de negócio e a filha não pode
+simplesmente ignorá-las. O super() é o canal entre mãe e 
+filha, garantindo que as regras sempre sejam respeitadas.]
 
 ---
 

@@ -1,39 +1,41 @@
 package br.com.escola.main;
 
 import br.com.escola.model.Guitarra;
+import br.com.escola.model.GuitarraAcustica;
+import br.com.escola.model.GuitarraEletrica;
 import br.com.escola.model.Guitarrista;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        System.out.println("Inicializando Sistema\n");
+        System.out.println("Teste de Herança\n");
 
-       
-        Guitarra minhaGuitarra = new Guitarra("Fender", 6);
-        Guitarra guitarraDoProf = new Guitarra("Gibson", 7);
+        GuitarraEletrica stratocaster = new GuitarraEletrica("Fender", 6, 100);
+        GuitarraAcustica violao = new GuitarraAcustica("Yamaha", 6, true);
 
-        // Guitarristas associando cada um à sua Guitarra
-        Guitarrista bento = new Guitarrista("Bento", 20, 3, minhaGuitarra);
-        Guitarrista professor = new Guitarrista("Professor", 30, 10, guitarraDoProf);
+        
+        System.out.println("Testando GuitarraEletrica");
+        System.out.println("Marca: " + stratocaster.getMarca() + " | Potência: " + stratocaster.getPotenciaWatts() + "W");
+        stratocaster.afinar();
+        stratocaster.tocar("Comfortably Numb");
 
-        System.out.println("\nApresentações");
+        if (stratocaster.getPotenciaWatts() >= 100) {
+            System.out.println("Atenção: guitarra de alta potência, use protetor auricular!");
+        }
+
+        System.out.println("\nTestando GuitarraAcustica");
+        System.out.println("Marca: " + violao.getMarca() + " | Cutaway: " + violao.isTemCutaway());
+        violao.afinar();
+        violao.tocar("Blackbird");
+
+        if (violao.isTemCutaway()) {
+            System.out.println("Guitarra com cutaway: acesso facilitado às casas mais altas!");
+        }
+
+        System.out.println("\nAssociando com Guitarrista");
+        // Aqui o guitarrista pode receber qualquer tipo de Guitarra, mãe ou filha
+        Guitarrista bento = new Guitarrista("Bento", 20, 3, stratocaster);
         bento.apresentar();
-        System.out.println();
-        professor.apresentar();
-
-
-        System.out.println("\nProva da Referência");
-        System.out.println("Guitarra do Bento está afinada? " + bento.getGuitarra().isEstaAfinada());
-        minhaGuitarra.afinar();
-
-        System.out.println("Depois de afinar, consultado através do Guitarrista: " + bento.getGuitarra().isEstaAfinada());
-
-        System.out.println("\nNavegando entre objetos");
-        System.out.println("Marca da guitarra do professor consultada via Guitarrista: "
-                + professor.getGuitarra().getMarca());
-
-        bento.praticar(2);
-        bento.praticar(0);
     }
 }
