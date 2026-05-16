@@ -6,30 +6,32 @@ public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        // Instância 1 - Minha Guitarra
-        Guitarra minhaGuitarra = new Guitarra("Fender", 6);
+        System.out.println("Iniciando o Sistema Guitarra\n");
 
-        // Instância 2 - Guitarra do Professor
+        // Construtor agora vai exigir a marca e numero_de_cordas
+        Guitarra minhaGuitarra = new Guitarra("Fender", 6);
         Guitarra guitarraDoProfessor = new Guitarra("Gibson", 7);
 
-        System.out.println("Teste: tocar sem afinar (valor inválido)");
+        System.out.println("Teste: tocar sem afinar");
         minhaGuitarra.tocar("Bohemian Rhapsody");
 
-        System.out.println("Teste: afinar e tocar (valor válido)");
+        System.out.println("\nTeste: afinar e tocar");
         minhaGuitarra.afinar();
         minhaGuitarra.tocar("Bohemian Rhapsody");
 
-        System.out.println("Teste: trocar cordas com valor inválido");
+        System.out.println("\nTeste: trocar cordas com valor inválido");
         guitarraDoProfessor.trocarCordas(12);
 
-        System.out.println("Teste: trocar cordas com valor válido");
+        System.out.println("\nTeste: trocar cordas com valor válido");
         guitarraDoProfessor.trocarCordas(6);
 
-        System.out.println("Teste: tocar após trocar cordas sem afinar");
+        System.out.println("\nTeste: tocar após trocar cordas sem afinar");
         guitarraDoProfessor.tocar("Stairway to Heaven");
 
-        System.out.println("Estado final das guitarras");
-        System.out.println("Guitarra: " + minhaGuitarra.marca + " - Cordas: " + minhaGuitarra.numeroDeCordas + " - Afinada: " + minhaGuitarra.estaAfinada);
-        System.out.println("Guitarra: " + guitarraDoProfessor.marca + " - Cordas: " + guitarraDoProfessor.numeroDeCordas + " - Afinada: " + guitarraDoProfessor.estaAfinada);
+        System.out.println("\nStatus final das guitarras");
+        // Agora usamos getters para ler os atributos
+        System.out.println("Guitarra: " + minhaGuitarra.getMarca() + " | Cordas: " + minhaGuitarra.getNumeroDeCordas() + " | Afinada: " + minhaGuitarra.isEstaAfinada());
+        System.out.println("Guitarra: " + guitarraDoProfessor.getMarca() + " | Cordas: " + guitarraDoProfessor.getNumeroDeCordas() + " | Afinada: " + guitarraDoProfessor.isEstaAfinada());
+
     }
 }

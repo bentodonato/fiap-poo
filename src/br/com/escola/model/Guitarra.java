@@ -2,43 +2,66 @@ package br.com.escola.model;
 
 public class Guitarra {
 
-    // Atributos
-    public String marca;
-    public int numeroDeCordas;
-    public boolean estaAfinada;
+    // Atributos agora estão privados
+    private String marca;
+    private int numeroDeCordas;
+    private boolean estaAfinada;
 
     // Construtor
     public Guitarra(String marca, int numeroDeCordas) {
-        this.marca = marca;
-        this.numeroDeCordas = numeroDeCordas;
-        this.estaAfinada = false;
+        this.setMarca(marca);
+        this.setNumeroDeCordas(numeroDeCordas);
+        this.setEstaAfinada(false); // Toda guitarra vai começa desafinada
     }
 
-    // Método 1
+    // Métodos de comportamento
     public void afinar() {
-        this.estaAfinada = true;
-        System.out.println(this.marca + " foi afinada com sucesso!");
+        this.setEstaAfinada(true);
+        System.out.println(this.getMarca() + " foi afinada com sucesso!");
     }
 
-    // Método 2
     public void tocar(String musica) {
-        // Regra de negócio: só toca se estiver afinada
-        if (this.estaAfinada == false) {
-            System.out.println("Erro: a guitarra " + this.marca + " não está afinada. Afine antes de tocar.");
+        if (this.isEstaAfinada() == false) {
+            System.out.println("Erro: a guitarra " + this.getMarca() + " não está afinada. Afine antes de tocar.");
             return;
         }
-        System.out.println(this.marca + " está tocando: " + musica);
+        System.out.println(this.getMarca() + " está tocando: " + musica);
     }
 
-    // Método 3
     public void trocarCordas(int novoNumero) {
-        // Regra de negócio: só aceita 6 ou 7 cordas
         if (novoNumero != 6 && novoNumero != 7) {
             System.out.println("Erro: número de cordas inválido. Use 6 ou 7.");
             return;
         }
-        this.numeroDeCordas = novoNumero;
-        this.estaAfinada = false; // Após trocar cordas, vai precisar afinar de novo
-        System.out.println(this.marca + " agora tem " + this.numeroDeCordas + " cordas. Lembre-se de afinar!");
+        this.setNumeroDeCordas(novoNumero);
+        this.setEstaAfinada(false);
+        System.out.println(this.getMarca() + " agora tem " + this.getNumeroDeCordas() + " cordas. Lembre-se de afinar!");
+    }
+
+    // Getters (públicos)
+    public String getMarca() {
+        return this.marca;
+    }
+
+    public int getNumeroDeCordas() {
+        return this.numeroDeCordas;
+    }
+
+    public boolean isEstaAfinada() {
+        return this.estaAfinada;
+    }
+
+    // Setters (privados - vai ser controlado pelos métodos da classe)
+    private void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    private void setNumeroDeCordas(int numeroDeCordas) {
+        this.numeroDeCordas = numeroDeCordas;
+    }
+
+    private void setEstaAfinada(boolean estaAfinada) {
+        this.estaAfinada = estaAfinada;
     }
 }
+
