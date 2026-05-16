@@ -234,20 +234,42 @@ e também garante ao sistema que sabe calcular sua própria nota.]
 [Instrumentos Musicais: Guitarra]
 
 **Quais classes você criou?**
-[Liste suas classes: ex: Livro, Usuario, Emprestimo]
+[Classes: Guitarra, GuitarraEletrica, GuitarraAcustica, Guitarrista, Avaliavel, SistemaPrincipal]
 
 **Qual foi o maior desafio técnico que você enfrentou?**
-[Descreva o desafio e como você o resolveu - 10-15 linhas]
+[O maior desafio foi manter a consistência do objeto
+ao longo de todas as evoluções do código. A cada atividade a
+classe Guitarra crescia, ganhando private, construtor, getters,
+abstract e por ai vai. E era necessário garantir que as subclasses e o
+SistemaPrincipal continuassem funcionando sem quebrar o que
+já havia sido construído antes. Tornar um atributo private obrigava o 
+uso de getters nas filhas; criar um método abstract obriga todas as 
+subclasses a implementá-lo. Então essa parte de ter cuidado com o código
+a cada nova atualização foi difícil.]
 
 ---
 
 ## 🎓 Conclusão
 
 **O que você aprendeu nestas 9 aulas?**
-[Reflexão final - conte sobre sua jornada de aprendizado]
+[Nessas 9 aulas, foi possível entender que POO não é apenas uma
+forma de organizar código, mas uma forma de modelar o mundo real
+com responsabilidades bem definidas. Um objeto deve proteger seu 
+próprio estado com encapsulamento, que hierarquias de herança 
+evitam repetição de código, e que interfaces permitem criar 
+contratos flexíveis entre classes que não se conhecem.]
 
 **Qual conceito foi mais difícil de entender?**
-[Qual conceito e como você superou a dificuldade?]
+[Para mim foi Interfaces: o conceito mais difícil porque exigem uma mudança
+de grande: em vez de pensar no que um objeto é, você passa
+a pensar no que um objeto sabe fazer. Eu achei difícil perceber quando
+criar uma interface em vez de usar herança, pois elas parecem
+resolver o mesmo problema. A diferença fica clara só quando objetos de 
+hierarquias diferentes precisam compartilhar um comportamento, como Guitarrista 
+e GuitarraEletrica ambos sendo Avaliavel, sem nenhuma relação familiar entre eles.]
 
 **O que você melhoraria no seu projeto se pudesse refazer?**
-[Reflexão crítica sobre seu próprio código]
+[Sobre o projeto: acho que ele cumpre bem o objetivo didático. 
+Porém, todos os dados somem quando o programa termina: não tem 
+persistência em banco de dados ou arquivo. E outra é que o 
+SistemaPrincipal cresceu demais: ele testa tudo em um único método main.]
