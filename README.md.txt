@@ -25,7 +25,7 @@ Este projeto é o resultado do aprendizado nas aulas 1-9 de Programação Orient
 - [x] Aula 5 - Associação
 - [x] Aula 6 - Herança
 - [x] Aula 7 - Polimorfismo
-- [] Aula 8 - Classes Abstratas
+- [x] Aula 8 - Classes Abstratas
 - [] Aula 9 - Interfaces
 
 ---

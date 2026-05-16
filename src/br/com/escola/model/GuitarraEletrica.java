@@ -9,9 +9,7 @@ public class GuitarraEletrica extends Guitarra {
         this.setPotenciaWatts(potenciaWatts);
     }
 
-    public int getPotenciaWatts() {
-        return this.potenciaWatts;
-    }
+    public int getPotenciaWatts() { return this.potenciaWatts; }
 
     private void setPotenciaWatts(int watts) {
         if (watts > 0) {
@@ -23,7 +21,12 @@ public class GuitarraEletrica extends Guitarra {
     }
 
     @Override
+    public void exibirTipo() {
+        System.out.println("Tipo: Guitarra Elétrica | Potência: " + this.potenciaWatts + "W | Estilo: Rock e Metal");
+    }
+
+    @Override
     public String gerarSom() {
-        return "Som elétrico amplificado a " + this.potenciaWatts + "W: WROOM! Distorção total no som!";
+        return "Som elétrico amplificado a " + this.potenciaWatts + "W: WROOM! Distorção total do som!";
     }
 }

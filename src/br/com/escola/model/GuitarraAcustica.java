@@ -9,12 +9,15 @@ public class GuitarraAcustica extends Guitarra {
         this.temCutaway = temCutaway;
     }
 
-    public boolean isTemCutaway() {
-        return this.temCutaway;
+    public boolean isTemCutaway() { return this.temCutaway; }
+
+    @Override
+    public void exibirTipo() {
+        System.out.println("Tipo: Guitarra Acústica | Cutaway: " + this.temCutaway + " | Estilo: Folk e MPB");
     }
 
     @Override
     public String gerarSom() {
-        return "Som acústico natural e encorpado: PLING! Sem amplificador necessário!";
+        return "Som acústico natural e encorpado: PLING! Sem amplificador necessário.";
     }
 }
