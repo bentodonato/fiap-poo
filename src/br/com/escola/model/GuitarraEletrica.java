@@ -2,10 +2,8 @@ package br.com.escola.model;
 
 public class GuitarraEletrica extends Guitarra {
 
-    // Esse aqui é o atributo exclusivo, a mãe Guitarra não tem isso
     private int potenciaWatts;
 
-    // Construtor da filha
     public GuitarraEletrica(String marca, int numeroDeCordas, int potenciaWatts) {
         super(marca, numeroDeCordas);
         this.setPotenciaWatts(potenciaWatts);
@@ -22,5 +20,10 @@ public class GuitarraEletrica extends Guitarra {
             System.out.println("Erro: potência inválida. Usando 10W como padrão.");
             this.potenciaWatts = 10;
         }
+    }
+
+    @Override
+    public String gerarSom() {
+        return "Som elétrico amplificado a " + this.potenciaWatts + "W: WROOM! Distorção total no som!";
     }
 }

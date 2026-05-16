@@ -4,38 +4,33 @@ import br.com.escola.model.Guitarra;
 import br.com.escola.model.GuitarraAcustica;
 import br.com.escola.model.GuitarraEletrica;
 import br.com.escola.model.Guitarrista;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        System.out.println("Teste de Herança\n");
+        List<Guitarra> colecao = new ArrayList<>();
 
-        GuitarraEletrica stratocaster = new GuitarraEletrica("Fender", 6, 100);
-        GuitarraAcustica violao = new GuitarraAcustica("Yamaha", 6, true);
+        colecao.add(new GuitarraEletrica("Fender", 6, 100));
+        colecao.add(new GuitarraEletrica("Gibson", 7, 50));
+        colecao.add(new GuitarraAcustica("Yamaha", 6, true));
+        colecao.add(new GuitarraAcustica("Takamine", 6, false));
 
-        
-        System.out.println("Testando GuitarraEletrica");
-        System.out.println("Marca: " + stratocaster.getMarca() + " | Potência: " + stratocaster.getPotenciaWatts() + "W");
-        stratocaster.afinar();
-        stratocaster.tocar("Comfortably Numb");
+        System.out.println("RELATÓRIO DE SONS DA COLEÇÃO\n");
 
-        if (stratocaster.getPotenciaWatts() >= 100) {
-            System.out.println("Atenção: guitarra de alta potência, use protetor auricular!");
-        }
-
-        System.out.println("\nTestando GuitarraAcustica");
-        System.out.println("Marca: " + violao.getMarca() + " | Cutaway: " + violao.isTemCutaway());
-        violao.afinar();
-        violao.tocar("Blackbird");
-
-        if (violao.isTemCutaway()) {
-            System.out.println("Guitarra com cutaway: acesso facilitado às casas mais altas!");
+        for (Guitarra guitarra : colecao) {
+            System.out.println("Guitarra: " + guitarra.getMarca());
+            guitarra.afinar();
+            System.out.println(guitarra.gerarSom());
+            System.out.println("---------------------------------------");
         }
 
         System.out.println("\nAssociando com Guitarrista");
-        // Aqui o guitarrista pode receber qualquer tipo de Guitarra, mãe ou filha
-        Guitarrista bento = new Guitarrista("Bento", 20, 3, stratocaster);
+        // Guitarrista vai aceitar qualquer tipo de Guitarra: mãe ou filha
+        Guitarrista bento = new Guitarrista("Bento", 20, 3, new GuitarraEletrica("Fender", 6, 100));
         bento.apresentar();
+        System.out.println(bento.getGuitarra().gerarSom());
     }
 }

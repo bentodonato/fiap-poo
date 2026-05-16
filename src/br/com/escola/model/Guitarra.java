@@ -63,5 +63,8 @@ public class Guitarra {
     private void setEstaAfinada(boolean estaAfinada) {
         this.estaAfinada = estaAfinada;
     }
+    public String gerarSom() {
+        return "Som genérico de guitarra.";
+    }
 }
 

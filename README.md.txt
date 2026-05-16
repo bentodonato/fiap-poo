@@ -24,7 +24,7 @@ Este projeto é o resultado do aprendizado nas aulas 1-9 de Programação Orient
 - [x] Aula 4 - Construtores
 - [x] Aula 5 - Associação
 - [x] Aula 6 - Herança
-- [] Aula 7 - Polimorfismo
+- [x] Aula 7 - Polimorfismo
 - [] Aula 8 - Classes Abstratas
 - [] Aula 9 - Interfaces
 
@@ -172,7 +172,14 @@ filha, garantindo que as regras sempre sejam respeitadas.]
 **Pergunta:** "No nosso loop `for (Veiculo veiculo : frota)`, a variável `veiculo` é do tipo genérico `Veiculo`. Se esquecêssemos de criar o método `calcularAutonomia()` lá na classe mãe `Veiculo`, nós conseguiríamos chamá-lo dentro do loop, mesmo sabendo que ele existe dentro do `Carro` e da `Moto`? Por que o contrato precisa existir na base da hierarquia?"
 
 **Sua Resposta:**
-[Escreva sua reflexão aqui]
+[Não, não conseguiríamos chamar de dentro do loop. No loop for (Guitarra guitarra : colecao),
+a variável guitarra é do tipo genérico Guitarra. O Java só vai enxergar
+o que a mãe declara: se gerarSom() não existisse em Guitarra, não saberia que esse método existe,
+mesmo que ele estivesse dentro de GuitarraEletrica e GuitarraAcustica.
+É o contrato da mãe que garante que qualquer objeto da lista vai conseguir responder ao gerarSom().
+Sem esse contrato na base, o polimorfismo não funciona. A lista
+aceita qualquer herdeiro porque todos assinam o mesmo
+contrato em Guitarra.]
 
 ---
 
@@ -207,7 +214,7 @@ Como as interfaces resolvem esse problema?"
 ### Desafio Pessoal (Seu Projeto)
 
 **Qual foi o domínio que você escolheu para seu projeto pessoal?**
-[Responda aqui: ex: Sistema de Biblioteca, Playlist de Música, PetShop, etc.]
+[Instrumentos Musicais: Guitarra]
 
 **Quais classes você criou?**
 [Liste suas classes: ex: Livro, Usuario, Emprestimo]
