@@ -1,32 +1,185 @@
-POO - Checkpoint 3: Classe Guitarra
+# Projeto Guitarra - [Bento Donato Garcia]
 
+## Informações do Aluno
 
-O que este projeto representa:
-Uma guitarra é um instrumento musical de cordas. Este projeto tem
-como objetivo modelar esse objeto usando Orientação a Objetos em Java.
+- **Nome:** [Bento Donato Garcia]
+- **RM:** [561621]
+- **Turma:** [2CCPO]
+- **Curso:** [Ciência da Computação]
+- **GitHub:** [@bentodonato]
 
+---
 
-ATRIBUTOS
+## 🎯 Descrição do Projeto
 
-marca          : String  - Nome do fabricante
-numeroDeCordas : int     - Quantidade de cordas (6 ou 7)
-estaAfinada    : boolean - Se a guitarra está afinada ou não
+Este projeto é o resultado do aprendizado nas aulas 1-9 de Programação Orientada a Objetos, onde desenvolvemos o sistema **FiapRide** (aplicativo de mobilidade urbana). Além disso, desenvolvi também o projeto para a minha Classe Guitarra
 
+---
 
-METODOS
+## ✅ Checklist de Implementação
 
-afinar()                    - Afina a guitarra
-tocar(musica : String)      - Toca uma música (exige afinação)
-trocarCordas(numero : int)  - Troca cordas (aceita 6 ou 7)
+- [x] Aula 1 - Classes e Objetos
+- [x] Aula 2 - Métodos
+- [] Aula 3 - Encapsulamento
+- [] Aula 4 - Construtores
+- [] Aula 5 - Associação
+- [] Aula 6 - Herança
+- [] Aula 7 - Polimorfismo
+- [] Aula 8 - Classes Abstratas
+- [] Aula 9 - Interfaces
 
+---
 
-HISTORICO DE ATIVIDADES
+## 🤔 Perguntas de Reflexão
 
-Atividade 1 e 2:
-  - Objeto escolhido: Guitarra
-  - Definidos 3 atributos e criadas 2 instâncias
+### Aula 1 - Classes e Objetos
 
-Atividade 3:
-  - Adicionado construtor
-  - Implementados metodos com regras de negocio (if/else)
-  - Testados valores validos e invalidos no console
+**Pergunta:** "Por que precisamos criar uma classe `Passageiro`? Não seria mais fácil apenas criar variáveis soltas no main, como `String nomeAna = "Ana"` e `double saldoAna = 50.0`?
+
+**Pense:** E se o FiapRide tiver 1 milhão de usuários? Como a Classe ajuda a resolver isso?"
+
+**Sua Resposta:**
+[A ideia de criar variáveis soltas no main funciona para um exemplo simples,
+mas se torna inviável depois. Gerenciar 1 milhão de
+guitarras com variáveis como marcaGuitarra1, marcaGuitarra2...
+marcaGuitarra1000000... seria impossível de manter ou organizar.
+A classe Guitarra resolve isso sendo um molde que eu posso reutilizar: com
+uma única definição de classe, conseguimos criar quantos objetos
+quisermos com new Guitarra(), cada um com seus próprios valores
+de marca, numeroDeCordas e estaAfinada. Além disso, a classe agrupa dados e 
+comportamentos no mesmo lugar. Em vez de ter a lógica de afinar espalhada pelo 
+código, ela fica dentro do próprio objeto.]
+
+---
+
+### Aula 2 - Métodos
+
+**Pergunta:** "Se nós podemos simplesmente fazer `passageiro.saldo = passageiro.saldo + 100` diretamente no código principal, por que dá tanto trabalho criar um método específico chamado `adicionarSaldo(valor)` para fazer isso? Quais seriam os riscos para a nossa startup de mobilidade se deixássemos qualquer programador alterar o saldo diretamente?"
+
+**Sua Resposta:**
+[Realmente, alterar o estado de um objeto diretamente no main parece mais
+simples, mas abre muitas brechas. Se qualquer parte do código
+puder fazer guitarraDoProfessor.estaAfinada = true sem passar
+pelo método afinar(), não há nenhuma garantia de que as regras
+do objeto estão sendo respeitadas! O método afinar() existe justamente 
+para controlar como o estado vai mudar. Ele é o único lugar onde essa lógica 
+vive; se depois precisarmos adicionar uma nova regra, como cobrar um valor par
+afinar ou registrar quem afinaram, mudamos só o método, não
+precisamos caçar cada linha do main que alterava o atributo.
+
+Em projetos grandes com vários programadores, sem métodos, cada
+um alteraria os atributos do seu jeito, sem validação nenhuma.
+O método é relacionado ao objeto: ele quem define como deve se
+comportar, protegendo o sistema de inconsistências que poderiam surgir.]
+
+---
+
+### Aula 3 - Encapsulamento
+
+**Pergunta:** "No nosso código, os atributos são `private`, mas os métodos `getSaldo()` e `getNome()` são `public`. Por que é seguro deixar o `get` público, mas perigoso deixar o atributo original público?
+
+Pense bem: Qual a diferença entre dar a alguém uma CÓPIA de um documento seu, e entregar o documento ORIGINAL para a pessoa rasurar?"
+
+**Sua Resposta:**
+[Escreva sua reflexão aqui]
+
+---
+
+### Aula 4 - Construtores
+
+**Pergunta:** "Na nossa classe `Veiculo`, nós tomamos duas decisões arquitetônicas muito importantes:
+
+> 1. Nós **não** criamos o método `setModelo()`.
+> 2. O `setPlaca()` foi criado como **privado**, e criamos um método público chamado `atualizarPlaca()` para acessá-lo.
+>
+> Pensando no mundo real e no Clean Code: Por que é um erro gravíssimo clicar em 'Gerar Getters e Setters para tudo' automaticamente na sua IDE? Como as nossas duas decisões acima protegem o sistema de fraudes e falhas de lógica?"
+
+_Dica: Pense sobre o que pode ou não mudar fisicamente em um carro, e a diferença entre "alterar um dado no banco" e "executar um processo real no Detran"_
+
+**Sua Resposta:**
+[Escreva sua reflexão aqui]
+
+---
+
+### Aula 5 - Associação
+
+**Pergunta:** "No construtor da `Viagem`, nós exigimos o objeto inteiro (`Passageiro solicitante`). Se o nosso resumo só precisa imprimir o nome da pessoa, não seria mais fácil e mais leve pedir apenas a String do nome no construtor da Viagem (`String nomeDoPassageiro`) em vez do objeto todo?
+
+_Pense nas regras de negócio: O que acontece na hora que a Viagem acaba e o sistema precisa descontar o saldo? Se a Viagem tiver apenas a String "Ana Silva", ela consegue mexer no dinheiro dela?_"
+
+**Sua Resposta:**
+[Escreva sua reflexão aqui]
+
+---
+
+### Aula 6 - Herança
+
+**Pergunta:** "No nosso código, a mãe `Veiculo` possui os atributos `placa` e `modelo` como `private`. Quando o `Carro` herda de `Veiculo`, ele recebe esses atributos, mas o código dentro de `Carro` NÃO consegue fazer `this.placa = "ABC"`. Ele é obrigado a usar o `super()` ou o `setPlaca()`.
+
+Por que o Java não deixa a filha alterar as variáveis privadas da mãe diretamente? Qual o princípio das aulas passadas que isso está protegendo?"
+
+**Sua Resposta:**
+[Escreva sua reflexão aqui]
+
+---
+
+### Aula 7 - Polimorfismo
+
+**Pergunta:** "No nosso loop `for (Veiculo veiculo : frota)`, a variável `veiculo` é do tipo genérico `Veiculo`. Se esquecêssemos de criar o método `calcularAutonomia()` lá na classe mãe `Veiculo`, nós conseguiríamos chamá-lo dentro do loop, mesmo sabendo que ele existe dentro do `Carro` e da `Moto`? Por que o contrato precisa existir na base da hierarquia?"
+
+**Sua Resposta:**
+[Escreva sua reflexão aqui]
+
+---
+
+### Aula 8 - Classes Abstratas
+
+**Pergunta:** "Pense no mundo real: Faz sentido existir um objeto que é APENAS 'Veículo' sem ser um tipo específico? Você já entrou em uma concessionária e comprou "um veículo" genérico, sem ser carro, moto, caminhão ou nada disso?
+
+Por que, então, no código, precisamos EXPLICITAMENTE dizer ao Java que `Veiculo` é `abstract`? Por que ele não deduz isso sozinho?
+
+Pense: Se esquecermos de colocar `abstract`, qual o risco que corremos? Alguém pode criar `new Veiculo()` e quebrar a lógica do nosso sistema?"
+
+**Sua Resposta:**
+[Escreva sua reflexão aqui]
+
+---
+
+### Aula 9 - Interfaces
+
+**Pergunta:** "Por que Java permite herança simples (apenas uma mãe), mas múltipla implementação de interfaces (vários contratos)?
+
+Pense: Se `CarroEletrico` pudesse herdar de `Veiculo` E de `Bateria` ao mesmo tempo (herança múltipla), o que aconteceria se AMBAS as mães tivessem um método chamado `ligar()`?
+
+Como as interfaces resolvem esse problema?"
+
+**Sua Resposta:**
+[Escreva sua reflexão aqui]
+
+---
+
+## 🚀 Desafios Técnicos Implementados
+
+### Desafio Pessoal (Seu Projeto)
+
+**Qual foi o domínio que você escolheu para seu projeto pessoal?**
+[Responda aqui: ex: Sistema de Biblioteca, Playlist de Música, PetShop, etc.]
+
+**Quais classes você criou?**
+[Liste suas classes: ex: Livro, Usuario, Emprestimo]
+
+**Qual foi o maior desafio técnico que você enfrentou?**
+[Descreva o desafio e como você o resolveu - 10-15 linhas]
+
+---
+
+## 🎓 Conclusão
+
+**O que você aprendeu nestas 9 aulas?**
+[Reflexão final - conte sobre sua jornada de aprendizado]
+
+**Qual conceito foi mais difícil de entender?**
+[Qual conceito e como você superou a dificuldade?]
+
+**O que você melhoraria no seu projeto se pudesse refazer?**
+[Reflexão crítica sobre seu próprio código]
