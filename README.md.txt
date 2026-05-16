@@ -81,7 +81,19 @@ comportar, protegendo o sistema de inconsistências que poderiam surgir.]
 Pense bem: Qual a diferença entre dar a alguém uma CÓPIA de um documento seu, e entregar o documento ORIGINAL para a pessoa rasurar?"
 
 **Sua Resposta:**
-[Escreva sua reflexão aqui]
+[Quando deixamos o atributo público, qualquer parte do código pode
+alterá-lo diretamente, sem passar por nenhuma validação. É como
+entregar o documento original direto: a pessoa pode rasurar, apagar e
+escrever o que quiser, sem deixar rastro e sem que ninguém controle.
+O getter público vai funcionar como uma cópia: quem chama getMarca()
+recebe o valor de marca para ler e usar, mas não consegue alterar
+o original. O atributo privado continua protegido dentro do objeto.
+No projeto, isso significa que qualquer código pode saber
+qual é a marca da guitarra com getMarca(), mas ninguém consegue
+fazer minhaGuitarra.marca = "marca_falsa" diretamente. A única
+forma de mudar o estado do objeto é pelos métodos que nós mesmos
+controlamos, onde podemos colocar validações e regras de negócio
+da maneira que quisermos.]
 
 ---
 
